@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:500" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/style.css"> -->
+
+  </head>
+  <body>
+    
+    <div class="container">
+      
+      <div class="jumbotron text-center">
+        <h1>Survey</h1>
+        <h3>Find out who your perfect charachter match is.</h3>
+        <hr>
+        <a href="/"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon"></span> Home</button></a>
+        
+      </div>
+
+      <div class="form">
+        
+        <form>
+          <div class="form-group">
+            <label class="col-form-label" for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Example input">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="formGroupExampleInput2">Image url</label>
+            <input type="text" class="form-control" id="imageUrl" placeholder="Another input">
+          </div>
+        </form>
+
+        <div class="question">
+
+          <h3>You like to read.</h3>
+        
+          <select id='Q1' class="form-control text-center">
+            <option>1 (Strongly Disagree)</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5 (Strongly Agree)</option>
+          </select>
+
+        </div>
+
+        <div class="question">
+
+          <h3>You are excited to try something new.</h3>
+        
+          <select id="Q2" class="form-control text-center">
+            <option>1 (Strongly Disagree)</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5 (Strongly Agree)</option>
+          </select>
+
+        </div>
+
+        <div class="question">
+
+          <h3>Your favorite music is rap.</h3>
+        
+          <select id="Q3" class="form-control text-center">
+            <option>1 (Strongly Disagree)</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5 (Strongly Agree)</option>
+          </select>
+
+        </div>
+
+        <div class="question">
+
+          <h3>You love making new friends.</h3>
+        
+          <select id="Q4" class="form-control text-center">
+            <option>1 (Strongly Disagree)</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5 (Strongly Agree)</option>
+          </select>
+
+        </div>
+
+        <div class="question">
+
+          <h3>You are quiet.</h3>
+        
+          <select id="Q5" class="form-control text-center">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+
+        </div>
+
+        <button type="submit" id= "submit-survey" class="btn btn-primary">Submit</button>
+
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+      // Question: What does this code do?
+      $("#submit-survey").on("click", function(event) {
+        event.preventDefault();
+
+        var scores = [];
+
+        scores.push($('#Q1').find(":selected").text(),$('#Q2').find(":selected").text());
+        scores.push($('#Q3').find(":selected").text(),$('#Q3').find(":selected").text());
+        scores.push($('#Q3').find(":selected").text(),$('#Q3').find(":selected").text());
+
+        var newMatch = {
+          name: $("#name").val().trim(),
+          imageUrl: $("#imageUrl").val().trim(),
+          score: scores
+        }
+
+        
+
+        console.log(scores);
+
+        $.post("/api/new", newMatch)
+        .done(function(data) {
+          console.log(data);
+          alert("Adding character...");
+        });
+
+      });
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

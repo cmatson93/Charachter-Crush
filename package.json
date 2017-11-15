@@ -1,0 +1,25 @@
+{
+  "name": "charachter-crush",
+  "version": "1.0.0",
+  "description": "master",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmatson93/Charachter-Crush.git"
+  },
+  "author": "Christina Matson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmatson93/Charachter-Crush/issues"
+  },
+  "homepage": "https://github.com/cmatson93/Charachter-Crush#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "path": "^0.12.7"
+  }
+}
