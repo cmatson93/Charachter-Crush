@@ -257,17 +257,18 @@
         function(data) {
           console.log(data);
           console.log("---");
-        });
+        })
 
-        $.get("/api/new", function(data) {
-          console.log("hi");
-          console.log(data);
-          
- 
-            $("#matchModal").append("<h3>Name: " + data.name + "</h3>");
-            $("#matchModal").append("<img src='" +data.photo+ "' alt='Match Pic'>")
-    
-        });
+          $.get("/api/new", function(match) {
+            console.log("hi");
+            console.log(match);
+            
+   
+              $("#matchModal").html("<h3>Name: " + match.name + "</h3>");
+              $("#matchModal").html("<img src='" +match.photo+ "' alt='Match Pic'>")
+      
+          });
+        
 
 
 
