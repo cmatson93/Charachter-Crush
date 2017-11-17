@@ -49,7 +49,7 @@ module.exports = function(app) {
 	  	 		totalDifference += difference;
 	  	 		if (totalDifference < lowestDiff) {
 	  	 			lowestDiff = totalDifference;
-	  	 			matched = charactersArray[i].name;
+	  	 			matched = charactersArray[i];
 	  	 		}
 	  	 	}
 	  	 	else if (charactersArray[i].scores[s] < scores[s]) {
@@ -57,7 +57,7 @@ module.exports = function(app) {
 	  	 		totalDifference += difference;
 	  	 		if (totalDifference < lowestDiff) {
 	  	 			lowestDiff = totalDifference;
-	  	 			matched = charactersArray[i].name;
+	  	 			matched = charactersArray[i];
 	  	 		}
 	  	 	}
 	  	 	else if (charactersArray[i].scores[s] === scores[s]){
@@ -65,7 +65,7 @@ module.exports = function(app) {
 	  	 		totalDifference = totalDifference + difference;
 	  	 		if (totalDifference < lowestDiff) {
 	  	 			lowestDiff = totalDifference;
-	  	 			matched = charactersArray[i].name;
+	  	 			matched = charactersArray[i];
 	  	 		}
 	  	 	}
 	  	 }

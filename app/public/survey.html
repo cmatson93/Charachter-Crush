@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet"> -->
 
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+
+      <!-- Custom styles for this template -->
+      <!-- <link href="assets/css/style.css" type="text/css" rel="stylesheet"> -->
 
   </head>
   <body>
@@ -27,6 +33,15 @@
         </div>
         <div class="col-md-2"></div>
       </div>
+
+      <div class="row">
+         
+        <div class="col-md-8">
+          <p>Please select a number from 1-5. 1 being strongly disagree, 5 being strongly agree.</p>
+        </div>
+
+      </div>
+
       <div class="row">
         <div class="col-md-12 form mb-5">
           
@@ -35,15 +50,15 @@
               <label class="col-form-label" for="formGroupExampleInput">Name</label>
               <input type="text" class="form-control" id="name" placeholder="Example input">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-form-label" for="formGroupExampleInput2">Image url</label>
               <input type="text" class="form-control" id="imageUrl" placeholder="Another input">
-            </div>
+            </div> -->
           </form>
 
           <div class="question">
 
-            <h3>You like to read.</h3>
+            <h3>You like to be the center of attention.</h3>
           
             <select id='Q1' class="form-control text-center">
               <option>1</option>
@@ -57,7 +72,7 @@
 
           <div class="question">
 
-            <h3>You are excited to try something new.</h3>
+            <h3>You are a very competitve person.</h3>
           
             <select id="Q2" class="form-control text-center">
               <option>1</option>
@@ -71,7 +86,7 @@
 
           <div class="question">
 
-            <h3>Your favorite music is rap.</h3>
+            <h3>Looks are something you find important.</h3>
           
             <select id="Q3" class="form-control text-center">
               <option>1</option>
@@ -85,7 +100,7 @@
 
           <div class="question">
 
-            <h3>You love making new friends.</h3>
+            <h3>People conisder you to be someone they can trust.</h3>
           
             <select id="Q4" class="form-control text-center">
               <option>1</option>
@@ -99,9 +114,79 @@
 
           <div class="question">
 
-            <h3>You are quiet.</h3>
+            <h3>You enjoy watching the movie The Notebook.</h3>
           
             <select id="Q5" class="form-control text-center">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+
+          </div>
+
+          <div class="question">
+
+            <h3>Reading is one of your favorite hobbies.</h3>
+          
+            <select id="Q6" class="form-control text-center">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+
+          </div>
+
+          <div class="question">
+
+            <h3>Your family is the most important thing to you.</h3>
+          
+            <select id="Q7" class="form-control text-center">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+
+          </div>
+
+          <div class="question">
+
+            <h3>Your willing to do whatever to get what you want.</h3>
+          
+            <select id="Q8" class="form-control text-center">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+
+          </div>
+
+          <div class="question">
+
+            <h3>Without money you can't be happy.</h3>
+          
+            <select id="Q9" class="form-control text-center">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+
+          </div>
+
+          <div class="question">
+
+            <h3>You enjoy giving rather than recieving.</h3>
+          
+            <select id="Q10" class="form-control text-center">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -155,12 +240,15 @@
 
         scoresArray.push(parseInt($('#Q1').find(":selected").val()),parseInt($('#Q2').find(":selected").val()));
         scoresArray.push(parseInt($('#Q3').find(":selected").val()),parseInt($('#Q4').find(":selected").val()));
-        scoresArray.push(parseInt($('#Q5').find(":selected").val()));
+        scoresArray.push(parseInt($('#Q5').find(":selected").val()),parseInt($('#Q6').find(":selected").val()));
+        scoresArray.push(parseInt($('#Q7').find(":selected").val()),parseInt($('#Q8').find(":selected").val()));
+        scoresArray.push(parseInt($('#Q9').find(":selected").val()),parseInt($('#Q10').find(":selected").val()));
+
 
 
         var newMatch = {
           name: $("#name").val().trim(),
-          imageUrl: $("#imageUrl").val().trim(),
+          // imageUrl: $("#imageUrl").val().trim(),
           score: JSON.stringify(scoresArray)
         };
 
@@ -176,12 +264,18 @@
           console.log(data);
           
  
-            $("#matchModal").append("<h3>Name: " + data + "</h3>");
+            $("#matchModal").append("<h3>Name: " + data.name + "</h3>");
+            $("#matchModal").append("<img src='" +data.photo+ "' alt='Match Pic'>")
     
         });
 
+
+
       });
 
+      $("#viewMatch").on("click", function(event) {
+
+      });
 
         
       
@@ -191,8 +285,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
- -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>
