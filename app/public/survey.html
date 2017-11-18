@@ -36,29 +36,25 @@
 
       <div class="row">
          
-        <div class="col-md-8">
+        <div class="col-md-8" id="instructions">
           <p>Please select a number from 1-5. 1 being strongly disagree, 5 being strongly agree.</p>
         </div>
 
       </div>
 
       <div class="row">
-        <div class="col-md-12 form mb-5">
+        <div class="col-md-12 form mb-5 rounded">
           
           <form>
             <div class="form-group">
               <label class="col-form-label" for="formGroupExampleInput">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Example input">
+              <input type="text" class="form-control" id="name" placeholder="Name">
             </div>
-            <!-- <div class="form-group">
-              <label class="col-form-label" for="formGroupExampleInput2">Image url</label>
-              <input type="text" class="form-control" id="imageUrl" placeholder="Another input">
-            </div> -->
           </form>
 
           <div class="question">
 
-            <h3>You like to be the center of attention.</h3>
+            <label>You like to be the center of attention.</label>
           
             <select id='Q1' class="form-control text-center">
               <option>1</option>
@@ -72,7 +68,7 @@
 
           <div class="question">
 
-            <h3>You are a very competitve person.</h3>
+            <label>You are a very competitve person.</label>
           
             <select id="Q2" class="form-control text-center">
               <option>1</option>
@@ -86,7 +82,7 @@
 
           <div class="question">
 
-            <h3>Looks are something you find important.</h3>
+            <label>Looks are something you find important.</label>
           
             <select id="Q3" class="form-control text-center">
               <option>1</option>
@@ -100,7 +96,7 @@
 
           <div class="question">
 
-            <h3>People conisder you to be someone they can trust.</h3>
+            <label>People conisder you to be someone they can trust.</label>
           
             <select id="Q4" class="form-control text-center">
               <option>1</option>
@@ -114,7 +110,7 @@
 
           <div class="question">
 
-            <h3>You enjoy watching the movie The Notebook.</h3>
+            <label>You enjoy watching the movie The Notebook.</label>
           
             <select id="Q5" class="form-control text-center">
               <option>1</option>
@@ -128,7 +124,7 @@
 
           <div class="question">
 
-            <h3>Reading is one of your favorite hobbies.</h3>
+            <label>Reading is one of your favorite hobbies.</label>
           
             <select id="Q6" class="form-control text-center">
               <option>1</option>
@@ -142,7 +138,7 @@
 
           <div class="question">
 
-            <h3>Your family is the most important thing to you.</h3>
+            <label>Your family is the most important thing to you.</label>
           
             <select id="Q7" class="form-control text-center">
               <option>1</option>
@@ -156,7 +152,7 @@
 
           <div class="question">
 
-            <h3>Your willing to do whatever to get what you want.</h3>
+            <label>Your willing to do whatever to get what you want.</label>
           
             <select id="Q8" class="form-control text-center">
               <option>1</option>
@@ -170,7 +166,7 @@
 
           <div class="question">
 
-            <h3>Without money you can't be happy.</h3>
+            <label>Without money you can't be happy.</label>
           
             <select id="Q9" class="form-control text-center">
               <option>1</option>
@@ -184,7 +180,7 @@
 
           <div class="question">
 
-            <h3>You enjoy giving rather than recieving.</h3>
+            <label>You enjoy giving rather than recieving.</label>
           
             <select id="Q10" class="form-control text-center">
               <option>1</option>
@@ -198,10 +194,6 @@
 
           <button type="submit" id= "submit-survey" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal">Submit</button>
 
-          <!-- Button trigger modal -->
-          <!-- <button type="button" class="btn btn-primary" >
-            Launch demo modal
-          </button> -->
 
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -226,15 +218,11 @@
 
         </div>
       </div>
+            <div class="align-baseline"><a href="/api/characters">Characters API</a></div>
     </div>
 
     <script type="text/javascript">
-      // Question: What does this code do?
       $("#submit-survey").on("click", function(event) {
-        // event.preventDefault();
-        // $('#myModal').on('shown.bs.modal', function () {
-        //   $('#myInput').trigger('focus')
-        // })
 
         var scoresArray = [];
 
@@ -248,7 +236,6 @@
 
         var newMatch = {
           name: $("#name").val().trim(),
-          // imageUrl: $("#imageUrl").val().trim(),
           score: JSON.stringify(scoresArray)
         };
 
@@ -256,28 +243,19 @@
         $.post("/api/new", newMatch,
         function(data) {
           console.log(data);
-          console.log("---");
         })
 
-          $.get("/api/new", function(match) {
-            console.log("hi");
-            console.log(match);
-            
-   
-              $("#matchModal").html("<h3>Name: " + match.name + "</h3>");
-              $("#matchModal").html("<img src='" +match.photo+ "' alt='Match Pic'>")
-      
-          });
+        $.get("/api/new", function(match) {
+          
+ 
+            $("#matchModal").html("<h3>" + match.name + "</h3><br><img src='" +match.photo+ "' alt='Match Pic'>");
+    
+        });
         
 
 
 
       });
-
-      $("#viewMatch").on("click", function(event) {
-
-      });
-
         
       
 
